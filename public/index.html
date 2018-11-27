@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>个人博客</title>
+		<link rel='stylesheet' href='font-awesome-4.7.0/css/font-awesome.min.css'>
+		<link rel='stylesheet' href='css/index.css'>
+		<link rel="stylesheet" href="css/aboutMe.css">
+		<link rel='stylesheet' href='css/slowLife.css'>
+		<link rel='stylesheet' href='css/msgBoard.css'>
+		<link rel='stylesheet' href='css/myShare.css'>
+		<script src='js/index.js'></script>
+		<script src='js/homepage_ajax.js'></script>
+		<script src='js/slowlife_ajax.js'></script>
+		<script src='js/aboutme_ajax.js'></script>
+		<script src='js/bloginfo_ajax.js'></script>
+		<script src='js/readarticle_ajax.js'></script>
+	</head>
+	<body onload='navTurn();getHomePage();blogInfo();getCookie();'>
+		<div class="loginorres">
+			<div class='log' >
+				<span class='logicon'>
+					<i class='fa fa-user-o'></i>
+				</span>	
+				<a href="login.html" target='_self' id='wellogin'>登录</a>	
+				<a href="#" id='wellogin2'></a>	
+			</div>
+			<div class='res' id='welres'>
+				<span class='resicon'>
+					<i class='fa fa-registered'></i>
+				</span>	
+				<a href="register.html">注册</a>	
+			</div>
+			<div class='res' id='welres2'>
+				<span class='resicon'>
+					<i class='fa fa-power-off'></i>
+				</span>	
+				<a href="#" onclick='delCookie();return false;'>退出</a>	
+			</div>
+			<div class='save'>
+				<span class='saveicon'>
+					<i class='fa fa-heart-o'></i>
+				</span>	
+				<a href="#">关注</a>	
+			</div>
+			<div class='click'>
+				<span class='clickicon'>
+					<i class='fa fa-thumbs-o-up'></i>
+				</span>	
+				<a href="#">点赞</a>	
+			</div>
+			<div class='com'>
+				<span class='comicon'>
+					<i class='fa fa-commenting-o'></i>
+				</span>	
+				<a href="#">评论</a>	
+			</div>
+		</div>
+		<div class="main">
+			<div class='black_circle' onmouseover='homeChange();' onmouseout='imgChange();'>
+				<div id='home_img'>
+					<img  src="img/lion.png" alt="图片无法加载">
+				</div>
+				<div id='home'>
+					<a href="http://127.0.0.1:3000/index.html">
+						<i class='fa fa-home'></i>
+					</a>
+				</div>
+			</div>
+			<div id="blackwhite">
+				<div class='gray_circle'>
+					<ul class='gray_circle_ul'>	
+						<li>●</li>
+						<li>●</li>
+						<li>●</li>
+						<li>●</li>
+					</ul>
+				</div>
+				<div class='white_circle'>
+					<ul class='white_circle_ul'>
+						<li >●</li>
+						<li style='margin-bottom:224.5px;'>●</li>
+						<li style='margin-bottom:224.5px;'>●</li>
+						<li style='margin-top:226px;'>●</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="leftside">
+				<div class='leftside_div1'>
+					<span id='bname'></span>
+					<div><a href="#">关注</a></div>
+				</div>
+				<div class='leftside_div2'>
+					<span id='btitle'></span>
+				</div>
+				<div class='leftside_img2'>
+					<img src="img/right.png" alt="图片无法加载">
+				</div>
+				<div class='leftside_nav'>
+					<div class='leftside_nav_ul'>
+						<ul id='navul'>
+							<li class='active'>
+								<a href="#" onclick='backHome();return false;'>
+									<span>首页</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" onclick='aboutMe();getAboutMe();return false;'>
+									<span>关于我</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" onclick='slowLife(1);return false;'>
+									<span>慢生活</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" onclick='msgBoard();return false;'>
+									<span>留言板</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" onclick='myShare();return false;'>
+									<span>我的分享</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class='leftside_body'>
+					<!--首页界面-->
+					<div id="homepage">
+						<div  class='leftside_img' id="banner" onmouseover='intervalStop();' onmouseout='intervalStart();'>
+						</div>
+						<div id='gt' class='nextImg' onclick='clickImg(1);' onmouseover='intervalStop();' onmouseout='intervalStart();'>&gt;</div>
+						<div id='lt' class='preImg' onclick='clickImg(2);' onmouseover='intervalStop();' onmouseout='intervalStart();'>&lt;</div>
+						<div class='imgCircle' onmouseover='intervalStop();' onmouseout='intervalStart();'>
+							<ul>
+								<li name='arrli' style='color:#E41635;'></li>
+								<li name='arrli'></li>
+								<li name='arrli'></li>
+								<li name='arrli'></li>
+							</ul>
+						</div>
+						<div class='leftside_article'>
+							<div class='leftside_title'>
+								<p><span>推荐文章</span></p>
+							</div>
+							<div class='leftside_hr'></div>
+						</div>
+						<div class='article_body' onmouseover='getArtDate(1);' onmouseout='delArtDate(1);'>
+							<div class='article_body_content'>
+								<div id='articledate' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='artdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='arttitle'></a>
+										<sup name='arttab'></sup>
+									</h3>
+								</div>
+								<div class='content_img'>
+									<img src="" name='artimg' alt="图片无法加载">
+								</div>
+								<div class='content_font'>
+									<span name='artdesc'></span>
+								</div>
+								<div class='content_btn'>
+									<a href="#" onclick='readArt("shadow.txt",0);'>
+										阅读全文 &gt;&gt;
+									</a>
+								</div>	
+							</div>
+							<div class='article_body_footer'>
+								<p>
+									<span>
+										作者：<span name='artauthor'></span>
+									</span>
+									<span>
+										分类：【<b><span name='artsort' style='color:#709b08;'></span></b>】</span>
+									<span>
+										浏览 (<b><span name='readnum' style='color:#709b08;'></span></b>)
+									</span>
+									<span>
+										评论 (<b><span name='commentnum' style='color:#709b08;'></span></b>)
+									</span>
+								</p>
+							</div>
+						</div>
+						
+						<div class='article_body2' onmouseover='getArtDate(2);' onmouseout='delArtDate(2);'>
+							<div class='article_body_content'>
+								<div id='articledate2' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='artdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='arttitle'></a>
+										<sup name='arttab'></sup>
+									</h3>
+								</div>
+								<div class='content_img'>
+									<img src="" name='artimg' alt="图片无法加载">
+								</div>
+								<div class='content_font'>
+									<span name='artdesc'></span>
+								</div>
+								<div class='content_btn'>
+									<a href="#" onclick='readArt("mistake.txt",1);'>
+										阅读全文 &gt;&gt;
+									</a>
+								</div>	
+							</div>
+							<div class='article_body_footer'>
+								<p>
+									<span>
+										作者：<span name='artauthor'></span>
+									</span>
+									<span>
+										分类：【<b><span style='color:#709b08;' name='artsort'></span></b>】
+									</span>
+									<span>
+										浏览 (<b><span style='color:#709b08;' name='readnum'></span></b>)
+									</span>
+									<span>
+										评论 (<b><span style='color:#709b08;' name='commentnum'></span></b>)
+									</span>
+								</p>
+							</div>
+						</div>		
+						<div class='article_body3' onmouseover='getArtDate(3);'
+						onmouseout='delArtDate(3);'>
+							<div class='article_body_content'>
+								<div id='articledate3' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='artdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='arttitle'></a>
+										<sup name='arttab'></sup>
+									</h3>
+								</div>
+								<div class='content_img'>
+									<img src="" name='artimg' alt="图片无法加载">
+								</div>
+								<div class='content_font'>
+									<span name='artdesc'></span>
+								</div>
+								<div class='content_btn'>
+									<a href="#" onclick='readArt("springflower.txt",2);'>
+										阅读全文 &gt;&gt;
+									</a>
+								</div>	
+							</div>
+							<div class='article_body_footer'>
+								<p>
+									<span>
+										作者：<span name='artauthor'></span>
+									</span>
+									<span>
+										分类：【<b><span style='color:#709b08;' name='artsort'></span></b>】
+									</span>
+									<span>
+										浏览 (<b><span style='color:#709b08;' name='readnum'></span></b>)
+									</span>
+									<span>
+										评论 (<b><span style='color:#709b08;' name='commentnum'></span></b>)
+									</span>
+								</p>
+							</div>
+						</div>
+
+						<div class='article_body4' onmouseover='getArtDate(4);' onmouseout='delArtDate(4);'>
+							<div class='article_body_content' >
+								<div id='articledate4' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='artdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='arttitle'></a>
+										<sup name='arttab'></sup>
+									</h3>
+								</div>
+								<div class='content_img'>
+									<img src="" name='artimg' alt="图片无法加载">
+								</div>
+								<div class='content_font'>
+									<span name='artdesc'></span>
+								</div>
+								<div class='content_btn'>
+									<a href="#" onclick='readArt("turbo.txt",3);'>
+										阅读全文 &gt;&gt;
+									</a>
+								</div>	
+							</div>
+							<div class='article_body_footer'>
+								<p>
+									<span>
+										作者：<span name='artauthor'></span>
+									</span>
+									<span>
+										分类：【<b><span style='color:#709b08;' name='artsort'></span></b>】
+									</span>
+									<span>
+										浏览 (<b><span style='color:#709b08;' name='readnum'></span></b>)
+									</span>
+									<span>
+										评论 (<b><span style='color:#709b08;' name='commentnum'></span></b>)
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<!--关于我界面-->
+					<div class='otherpage' id="aboutme">
+						<!--<iframe id='otherdisplay' src="" frameborder="0" width="704px" height="1436"></iframe>-->
+						<div class='header'>
+							<p>
+								<i class='fa fa-map-marker'></i>
+								你现在的位置是：首页 &gt; 关于我
+							</p>
+							<hr>
+						</div>
+						<div class='section'>
+							<h2>Just About Me</h2>
+							<p id='articleme'></p>
+							<h2>About My Blog</h2>
+							<p>域 名：www.silence.com 创建于2018年09月6日</p>
+							<p>服务器：阿里云服务器</p>
+							<p>程 序：PHP 帝国CMS7.0</p>
+							<p>微信公众号：wwwsilenceqqcom</p>
+						</div>
+					</div>
+					<!--慢生活界面-->
+					<div class='otherpage' id='slowlife'>
+						<div id='blackwhite'>
+							<div class='gray_circle2'>
+								<ul class='gray_circle_ul'>	
+									<li>●</li>				
+								</ul>
+							</div>
+							<div class='white_circle2'>
+								<ul class='white_circle_ul'>
+									<li >●</li>
+								</ul>
+							</div>
+						</div>	
+						<div class='header'>
+							<p>
+								<i class='fa fa-map-marker'></i>
+								你现在的位置是：首页 &gt; 慢生活
+							</p>
+							<hr>
+						</div>
+						<div class='searchcontent'>
+							<input type="text" id='search' placeholder='请输入搜索的文章'>
+							<div class='searchicon'>
+								<i class='fa fa-search'></i>
+							</div>
+						</div>
+						
+						<div class='section'>
+							<div class='slowbody' onmouseover='getArtDate(5)' onmouseout='delArtDate(5)' name='slowbody'>
+								<div id='articledate5' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='newdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='newtitle'></a>
+										<sup name='newtab'></sup>
+									</h3>
+								</div>
+								<div class='slowcontent'>
+									<p>
+										<span>
+											<i class='fa fa-bookmark'></i>
+											<span>作者：<span name='newauthor'></span></span>
+										</span>
+										
+										<span>
+											分类：【<b><span style='color:#709b08;' name='newsort'></span></b>】
+										</span>
+										<span>
+											浏览 (<b><span style='color:#709b08;' name='newreadnum'></span></b>)
+										</span>
+										<span>
+											评论 (<b><span style='color:#709b08;' name='newcommentnum'></span></b>)
+										</span>	
+									</p>
+									<span name='newfont'></span>
+									<span>
+										<a href="#" class='detail'>全文</a>
+									</span>
+								</div>
+								<div class='slowimg'>
+									<img name='newimg' src="" alt="图片无法加载">	
+								</div>
+								<hr>
+							</div>
+							<div class='slowbody2' onmouseover='getArtDate(6)' onmouseout='delArtDate(6)' name='slowbody'>
+								<div id='articledate6' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='newdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='newtitle'></a>
+										<sup name='newtab'></sup>
+									</h3>
+								</div>
+								<div class='slowcontent'>
+									<p>
+										<span>
+											<i class='fa fa-bookmark'></i>
+											<span>
+												作者：<span name='newauthor'></span>
+											</span>
+										</span>
+										
+										<span>
+											分类：【<b><span style='color:#709b08;' name='newsort'></span></b>】
+										</span>
+										<span>
+											浏览 (<b><span style='color:#709b08;' name='newreadnum'></span></b>)
+										</span>
+										<span>
+											评论 (<b><span style='color:#709b08;' name='newcommentnum'></span></b>)
+										</span>
+									</p>
+									<span name='newfont'></span>
+									<span>
+										<a href="#" class='detail'>全文</a>
+									</span>
+								</div>
+								<div class='slowimg'>
+									<img name='newimg' src="" alt="图片无法加载">	
+								</div>
+								<hr>
+							</div>
+							<div class='slowbody3' onmouseover='getArtDate(7)' onmouseout='delArtDate(7)' name='slowbody'>
+								<div id='articledate7' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='newdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='newtitle'></a>
+										<sup name='newtab'></sup>
+									</h3>
+								</div>
+								<div class='slowcontent'>
+									<p>
+										<span>
+											<i class='fa fa-bookmark'></i>
+											<span>
+												作者：<span name='newauthor'></span>
+											</span>
+										</span>
+										
+										<span>
+											分类：【<b><span style='color:#709b08;' name='newsort'></span></b>】
+										</span>
+										<span>
+											浏览 (<b><span style='color:#709b08;' name='newreadnum'></span></b>)
+										</span>
+										<span>
+											评论 (<b><span style='color:#709b08;' name='newcommentnum'></span></b>)
+										</span>
+									</p>
+									<span name='newfont'></span>
+									<span>
+										<a href="#" class='detail'>全文</a>
+									</span>
+								</div>
+								<div class='slowimg'>
+									<img name='newimg' src="" alt="图片无法加载">	
+								</div>
+								<hr>
+							</div>
+							<div class='slowbody4' onmouseover='getArtDate(8)' onmouseout='delArtDate(8)' name='slowbody'>
+								<div id='articledate8' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='newdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='newtitle'></a>
+										<sup name='newtab'></sup>
+									</h3>
+								</div>
+								<div class='slowcontent'>
+									<p>
+										<span>
+											<i class='fa fa-bookmark'></i>
+											<span>
+												作者：<span name='newauthor'></span>
+											</span>
+										</span>
+										
+										<span>
+											分类：【<b><span style='color:#709b08;' name='newsort'></span></b>】
+										</span>
+										<span>
+											浏览 (<b><span style='color:#709b08;' name='newreadnum'></span></b>)
+										</span>
+										<span>
+											评论 (<b><span style='color:#709b08;' name='newcommentnum'></span></b>)
+										</span>
+									</p>
+									<span name='newfont'></span>
+									<span >
+										<a href="#" class='detail'>全文</a>
+									</span>
+								</div>
+								<div class='slowimg'>
+									<img name='newimg' src="" alt="图片无法加载">	
+								</div>
+								<hr>
+							</div>
+							<div class='slowbody5' onmouseover='getArtDate(9)' onmouseout='delArtDate(9)' name='slowbody'>
+								<div id='articledate9' class='article_date_none'>
+									<div class='article_date_c'>
+										<span name='newdate'></span>
+									</div>
+									<div class='article_date_s'></div>
+								</div>
+								<div class='content_caption'>
+									<h3>
+										<a href="#" name='newtitle'></a>
+										<sup name='newtab'></sup>
+									</h3>
+								</div>
+								<div class='slowcontent'>
+									<p>
+										<span>
+											<i class='fa fa-bookmark'></i>
+											<span>
+												作者：<span name='newauthor'></span>
+											</span>
+										</span>
+										
+										<span>
+											分类：【<b><span style='color:#709b08;' name='newsort'></span></b>】
+										</span>
+										<span>
+											浏览 (<b><span style='color:#709b08;' name='newreadnum'></span></b>)
+										</span>
+										<span>
+											评论 (<b><span style='color:#709b08;' name='newcommentnum'></span></b>)
+										</span>
+									</p>
+									<span name='newfont'></span>
+									<span>
+										<a href="#" class='detail'>全文</a>
+									</span>
+								</div>
+								<div class='slowimg'>
+									<img name='newimg' src="" alt="图片无法加载">	
+								</div>
+								<hr>
+							</div>
+							<div class='pagination'>
+								<ul id='paginate'>
+									<li style="width:60px;">
+										<a href="#" style="width:60px;" onclick='paginate(0);'>
+											<span name='acolor'>上一页</span>
+										</a>
+									</li>
+									<li class="paginactive">
+										<a href="#" onclick='getNewArt(1);' >
+											<span class='yan' name='acolor'>1</span>
+										</a>
+									</li>
+									<li>	
+										<a href="#" onclick='getNewArt(2);'>
+											<span name='acolor'>2</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" name='acolor'>
+											<span name='acolor'>3</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" name='acolor'>
+											<span name='acolor'>4</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" name='acolor'>
+											<span name='acolor'>5</span>
+										</a>
+									</li>
+									<li style="width:60px;">
+										<a href="#" style="width:60px;" onclick='paginate(1);'>
+											<span name='acolor'>下一页</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--推荐文章详细信息界面-->
+					<div id='readart' class='readarticle'>
+						<div class='header'>
+							<p>
+								<i class='fa fa-map-marker'></i>
+								你现在的位置是：首页 &gt; 推荐文章
+							</p>
+							<hr>
+						</div>
+						<div class='section'>
+							<h2 id='readtitle' style='margin:0px auto;text-align:center;width:280px'></h2>
+							<p style='text-align:center;color:#666;font-size:13px;'>
+								<span>
+									<span>
+										作者：<span id='readauthor'></span>
+									</span>
+								</span>
+								<span>
+									分类：【<b><span style='color:#709b08;' id='readsort'></span></b>】
+								</span>
+								<span>
+									浏览 (<b><span style='color:#709b08;' id='readlook'></span></b>)
+								</span>
+								<span>
+									评论 (<b><span style='color:#709b08;' id='readcomment'></span></b>)
+								</span>
+							</p>
+							<p id='artcontent'></p>
+							<p>
+								<span id='pre' class='preart'>
+									<a href="#" onclick='getPreOrNext(0);'>
+										上一篇：<span>【</span>
+										<span id='preart' style='color:green;'></span>
+										<span>】</span>
+									</a>
+								</span>
+								<span id='next' class='preart nextart'>
+									<a href="#" onclick='getPreOrNext(1);'>
+										下一篇：<span>【</span>
+										<span id='nextart' style='color:green;'></span>
+										<span>】</span>
+									</a>
+								</span>
+							</p>
+						</div>
+					</div>
+					<!--留言板界面-->
+					<div id='msgboard' class='msgboard'>
+						<div class='header'>
+							<p>
+								<i class='fa fa-map-marker'></i>
+								你现在的位置是：首页 &gt; 留言板
+							</p>
+							<hr>
+						</div>
+						<div class='section'>
+						   <div class='words_div'>
+								<div class='words_content'>
+									<textarea name="words"cols="35" rows="4" placeholder='来说两句吧,字数不得超过150' title='快来加入评论吧~' maxlength=150></textarea>
+								</div>
+						   </div>
+						   <div class='words_foot'>
+								<div class='words_edit'>
+									<a href="#">
+										<span>
+											<i class='fa fa-smile-o' title='添加表情'></i>
+										</span>
+									</a>&nbsp;
+									<a href="#">
+										<span>
+											<i class='fa fa-image' title='添加图片'></i>
+										</span>
+									</a>&nbsp;
+									<a href="#">
+										<span>
+											<i class='fa fa-square-o' title='字体颜色'></i>
+										</span>
+									</a>
+									<a href="#">
+										<i class='fa fa-send' style='color:white'></i> 发表评论
+									</a>
+								</div>
+						   </div>
+						   <div class='commented'>
+								<div class='commented_div1'>热门评论</div>
+								<hr>
+								<div class='commented_body'>
+									<div>
+										<img src="img/people/p1.jpg" alt="头像无法加载">
+									</div>
+									<div>
+										<span class='commented_body_div1'>
+											Diamond
+											<span> [陕西省西安市网友]</span>
+										</span>
+									</div>
+									<div>
+										<span class='commented_body_div2'>
+											2018年9月15日 22:06
+										</span>
+									</div>
+									<div class='commented_body_div3'>
+										<p>
+											又经历了一次小改版，解决首页模块参差不齐的问题，留言板、关于栏目主内容区两端对齐，改善了移动端导航太大的问题，欢迎访问个人博客。又经历了一次小改版，解决首页模块参差不齐的问题，留言板、关于栏目主内容区两端对齐，改善了移动端导航太大的问题，欢迎访问个人博客。
+										</p>
+									</div>
+									<div class='commented_body_div4'>
+										<a href="#">
+											<span>
+												<i class='fa fa-commenting-o'></i> 
+												回复(<span><b>10</b></span>)
+											</span>
+										</a>
+										&nbsp;
+										<a href="#">
+											<span>
+												<i class='fa fa-thumbs-o-up'></i> 
+												赞(<span><b>17</b></span>)
+											</span>
+										</a>
+									</div>
+									<hr>
+								</div>
+								<div class='commented_body'>
+									<div>
+										<img src="img/people/p2.jpg" alt="头像无法加载">
+									</div>
+									<div>
+										<span class='commented_body_div1'>
+											小林
+											<span> [陕西省西安市网友]</span>
+										</span>
+									</div>
+									<div>
+										<span class='commented_body_div2'>
+											2018年9月15日 22:06
+										</span>
+									</div>
+									<div class='commented_body_div3'>
+										<p>
+											又经历了一次小改版，解决首页模块参差不齐的问题，留言板、关于栏目主内容区两端对齐，改善了移动端导航太大的问题，欢迎访问个人博客。
+										</p>
+									</div>
+									<div class='commented_body_div4'>
+										<a href="#">
+											<span>
+												<i class='fa fa-commenting-o'></i> 
+												回复(<span><b>10</b></span>)
+											</span>
+										</a>
+										&nbsp;
+										<a href="#">
+											<span>
+												<i class='fa fa-thumbs-o-up'></i> 
+												赞(<span><b>17</b></span>)
+											</span>
+										</a>
+									</div>
+									<hr>
+								</div>
+								<div class='commented_body'>
+									<div>
+										<img src="img/people/p3.jpg" alt="头像无法加载">
+									</div>
+									<div>
+										<span class='commented_body_div1'>
+											BeautifulD
+											<span> [陕西省西安市网友]</span>
+										</span>
+									</div>
+									<div>
+										<span class='commented_body_div2'>
+											2018年9月15日 22:06
+										</span>
+									</div>
+									<div class='commented_body_div3'>
+										<p>
+											又经历了一次小改版，解决首页模块参差不齐的问题，留言板、关于栏目主内容区两端对齐，改善了移动端导航太大的问题，欢迎访问个人博客。
+										</p>
+									</div>
+									<div class='commented_body_div4'>
+										<a href="#">
+											<span>
+												<i class='fa fa-commenting-o'></i> 
+												回复(<span><b>10</b></span>)
+											</span>
+										</a>
+										&nbsp;
+										<a href="#">
+											<span>
+												<i class='fa fa-thumbs-o-up'></i> 
+												赞(<span><b>17</b></span>)
+											</span>
+										</a>
+									</div>
+									<hr>
+								</div>
+								<div class='commented_body'>
+									<div>
+										<img src="img/people/p4.jpg" alt="头像无法加载">
+									</div>
+									<div>
+										<span class='commented_body_div1'>
+											如影随形
+											<span> [陕西省西安市网友]</span>
+										</span>
+									</div>
+									<div>
+										<span class='commented_body_div2'>
+											2018年9月15日 22:06
+										</span>
+									</div>
+									<div class='commented_body_div3'>
+										<p>
+											又经历了一次小改版，解决首页模块参差不齐的问题，留言板、关于栏目主内容区两端对齐，改善了移动端导航太大的问题，欢迎访问个人博客。
+										</p>
+									</div>
+									<div class='commented_body_div4'>
+										<a href="#">
+											<span>
+												<i class='fa fa-commenting-o'></i> 
+												回复(<span><b>10</b></span>)
+											</span>
+										</a>
+										&nbsp;
+										<a href="#">
+											<span>
+												<i class='fa fa-thumbs-o-up'></i> 
+												赞(<span><b>10</b></span>)
+											</span>
+										</a>
+									</div>
+									<hr>
+								</div>
+								<div class='commented_body'>
+									<div>
+										<img src="img/people/p5.jpg" alt="头像无法加载">
+									</div>
+									<div>
+										<span class='commented_body_div1'>
+											海绵宝宝
+											<span> [陕西省西安市网友]</span>
+										</span>
+									</div>
+									<div>
+										<span class='commented_body_div2'>
+											2018年9月15日 22:06
+										</span>
+									</div>
+									<div class='commented_body_div3'>
+										<p>
+											又经历了一次小改版，解决首页模块参差不齐的问题，留言板、关于栏目主内容区两端对齐，改善了移动端导航太大的问题，欢迎访问个人博客。
+										</p>
+									</div>
+									<div class='commented_body_div4'>
+										<a href="#">
+											<span>
+												<i class='fa fa-commenting-o'></i> 
+												回复(<span><b>10</b></span>)
+											</span>
+										</a>
+										&nbsp;
+										<a href="#">
+											<span>
+												<i class='fa fa-thumbs-o-up'></i> 
+												赞(<span><b>17</b></span>)
+											</span>
+										</a>
+									</div>
+									<hr>
+								</div>
+							</div>
+						</div>
+						<div class='pagination' style='margin:1426px auto 0px;'>
+							<ul id='paginate'>
+								<li style="width:60px;">
+									<a href="#" style="width:60px;">
+										<span>上一页</span>
+									</a>
+								</li>
+								<li class="paginactive">
+									<a href="#" >
+										<span class='yan2'>1</span>
+									</a>
+								</li>
+								<li>	
+									<a href="#">
+										<span>2</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>3</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>4</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>5</span>
+									</a>
+								</li>
+								<li style="width:60px;">
+									<a href="#" style="width:60px;" >
+										<span>下一页</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--我的分享界面-->
+					<div id='myshare' class='myshare'>
+						<div class='header'>
+							<p>
+								<i class='fa fa-map-marker'></i>
+								你现在的位置是：首页 &gt; 我的分享
+							</p>
+							<hr>
+						</div>
+						<div class='section'>
+							<div class='share'>
+								<div class='share_title'>
+									个人博客模板
+								</div>
+								<div class='share_more'>
+									<a href="#">更多 &gt;&gt;</a>
+								</div>
+								<div class='share_body'>
+									<div class='share_body_div1'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div9'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div2'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div10'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div3'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div11'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div4'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div12'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div5' >
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div13'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div6'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div14'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div7'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div15'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div8'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div16'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+								</div>
+							</div>
+							<div class='share'>
+								<div class='share_title'>
+									企业网站模板
+								</div>
+								<div class='share_more'>
+									<a href="#">更多 &gt;&gt;</a>
+								</div>
+								<div class='share_body'>
+									<div class='share_body_div1'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div9'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div2'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div10'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div3'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div11'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div4'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div12'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div5' >
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div13'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div6'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div14'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div7'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div15'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div8'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div16'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+								</div>
+							</div>
+							<div class='share'>
+								<div class='share_title'>
+									个人作品
+								</div>
+								<div class='share_more'>
+									<a href="#">更多 &gt;&gt;</a>
+								</div>
+								<div class='share_body'>
+									<div class='share_body_div1'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div9'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div2'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div10'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div3'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div11'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div4'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div12'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div5' >
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div13'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div6'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div14'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div7'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div15'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+									<div class='share_body_div8'>
+										<a href="#">
+											<img src="img/article/boot.jpg" alt="图片无法加载">
+										</a>
+									</div>
+									<div name='share_h' class='share_body_div16'>
+										<span>黑色HTML5个人博客模板</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='rightside'>
+				<div class='rightside_img'>
+					<img src="img/left.png" alt="图片无法加载">
+				</div>
+				<div class='rightside_content'>
+					<div class='rightside_fir' onmouseover='seeFloor();' onmouseout='hideFloor()'>
+						<div id='floor'>锲而不舍</div>
+						<img id='bimg' src="" alt="图片无法加载">
+					</div>
+					<div class='rightside_sec'>
+						<p class='rightside_sec_p1'>
+							<span id='motto'></span>
+						</p>
+						<p class='rightside_sec_p2'>
+							<span id='mcaption'></span>
+						</p>
+						<ul>
+							<li>原创</li>
+							<li>粉丝</li>
+							<li>访问量</li>
+						</ul>
+						<ul class='blognum'>
+							<li>
+								<span id='myself'></span>
+							</li>
+							<li>
+								<span>0</span>
+							</li>
+							<li>
+								<span>88</span>
+							</li>
+						</ul>
+					</div>
+					<!--个人基本信息-->
+					<div id='perinfo' class='rightside_thi'>
+						<div class='rightside_info'>
+							<ul>
+								<li>
+									<i class='fa fa-info-circle'></i> 
+									网名：<span id='netname'></span>
+								</li>
+								<li>
+									<i class='fa fa-user'></i> 
+									职业：<span id='job'></span>
+								</li>
+								<li>
+									<i class='fa fa-home'></i> 
+									籍贯：<span id='origin'></span>
+								</li>
+								<li>
+									<i class='fa fa-phone'></i> 
+									电话：<span id='phone'></span>
+								</li>
+								<li>
+									<i class='fa fa-at'></i> 
+									邮箱：<span id='email'></span>
+								</li>
+							</ul>
+						</div>
+						<div class='rightside_share'>
+							<ul>
+								<li>
+									<a href="#" style='color:#999;' title='分享到QQ'>
+										<i class='fa fa-qq'></i>
+									</a>
+								</li>
+								<li>
+									<a href="#" style='color:green;' title='分享到微信'>
+										<i class='fa fa-weixin'></i>
+									</a>
+								</li>
+								<li>
+									<a href="#" style='color:red;' title='分享到微博'>
+										<i class='fa fa-weibo'></i>
+									</a>
+								</li>
+								<li >
+									<a href="#" style='color:#46A3FF;' title='分享到博客'>
+										<i class='fa fa-pinterest'></i>
+									</a>
+								</li>
+								<li >
+									<a href="#" style='color:blue;' title='分享到人人圈'>
+										<i class='fa fa-renren'></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--文章分类侧边栏-->
+					<div id='asort' class='rightside_thi'>
+						<ul>
+							<li>
+								<a href="#">
+									<span>日记</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span>个人情感</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span>人生感悟</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span>人生哲理</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span>框架技术</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span>寓言故事</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!--留言板侧边栏-->
+					<div id='backword' class='backword'>
+						<div class='new_title'>
+							<p class='new_title_p'>最新评论</p>
+						</div>
+						<div class='newcomment'>
+							<div class='pimg'>
+								<img src="img/people/p1.jpg">
+							</div>
+							<div  class='pimg2'>
+								<img src="img/people/p2.jpg">
+							</div>
+							<div  class='pimg3'>
+								<img src="img/people/p3.jpg">
+							</div>
+							<div  class='pimg4'>
+								<img src="img/people/p4.jpg">
+							</div>
+							<div  class='pimg5'>
+								<img src="img/people/p5.jpg">
+							</div>
+							<div class='pword'>
+								<p>
+									<span class='pwordcol'>
+										Diamond&nbsp;
+									</span>
+									<span  class='pwordcol2'>
+										10分钟前
+									</span>
+								</p>
+								<p>
+									<span  class='pwordcol3'>
+										文章非常详细，我很喜...
+									</span>
+								</p>
+							</div>
+							<div class='pword1'>
+								<p>
+									<span class='pwordcol'>
+										小林&nbsp;
+									</span>
+									<span class='pwordcol2'>
+										30分钟前
+									</span>
+								</p>
+								<p>
+									<span  class='pwordcol3'>
+										文章非常详细，我很喜...
+									</span>
+								</p>
+							</div>
+							<div class='pword2'>
+								<p>
+									<span  class='pwordcol'>
+										BeautifulD&nbsp;
+									</span>
+									<span  class='pwordcol2'>
+										58分钟前
+									</span>
+								</p>
+								<p>
+									<span  class='pwordcol3'>
+										文章非常详细，我很喜...
+									</span>
+								</p>
+							</div>
+							<div class='pword3'>
+								<p>
+									<span  class='pwordcol'>
+										如影随形&nbsp;
+									</span>
+									<span  class='pwordcol2'>
+										1小时前
+									</span>
+								</p>
+								<p>
+									<span  class='pwordcol3'>
+										文章非常详细，我很喜...
+									</span>
+								</p>
+							</div>
+							<div class='pword4'>
+								<p>
+									<span  class='pwordcol'>
+										海绵宝宝&nbsp;
+									</span>
+									<span  class='pwordcol2'>
+										9月12日
+									</span>
+								</p>
+								<p>
+									<span  class='pwordcol3'>
+										文章非常详细，我很喜...
+									</span>
+								</p>
+							</div>
+						</div>
+						<!--访客头像-->
+						<div class='new2_title people'>
+							<p class='new_title_p'>最新访客</p>
+						</div>
+						<div class='newpeople'>
+							<div class='newhead'>
+								<img src="img/people/p1.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p5.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p4.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p3.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p2.jpg">
+							</div>
+
+							<div class='newhead'>
+								<img src="img/people/p5.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p4.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p3.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p2.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p1.jpg">
+							</div>
+
+							<div class='newhead'>
+								<img src="img/people/p4.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p3.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p2.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p1.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p5.jpg">
+							</div>
+
+							<div class='newhead'>
+								<img src="img/people/p3.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p2.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p1.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p5.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p4.jpg">
+							</div>
+
+							<div class='newhead'>
+								<img src="img/people/p2.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p1.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p5.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p4.jpg">
+							</div>
+							<div class='newhead'>
+								<img src="img/people/p3.jpg">
+							</div>
+						</div>
+					</div>
+					<!--推荐文章侧边栏-->
+					<div id='proarticle' class='rightside_new'>
+						<div class='new_title'>
+							<p class='new_title_p'>推荐文章</p>
+						</div>
+						<div class='new_body'>
+							<ul type='square'>
+								<li>
+									<a href="#" onclick='readArt("shadow.txt",0);'>
+										<span>灯光下的影子</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick='readArt("mistake.txt",1);'>
+										<span>犯错了怎么办？</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick='readArt("springflower.txt",2);'>
+										<span>春暖花开-走走停停-发现美</span>
+									</a>
+								</li>	
+								<li>
+									<a href="#" onclick='readArt("turbo.txt",3);'>
+										<span>两只蜗牛</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Bootstrap响应式布局</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>驾驭自己的人生从改变心态做起</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>每日一话</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>简单的手工玫瑰</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--点击排行侧边栏-->
+					<div id='clicksort' class='rightside_new'>
+						<div class='new_title'>
+							<p class='new_title_p'>点击排行</p>
+						</div>
+						<div class='new_body'>
+							<ul>
+								<li>
+									<a href="#" onclick='readArt("shadow.txt",0);'>
+										<span>灯光下的影子</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick='readArt("mistake.txt",1);'>
+										<span>犯错了怎么办？</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick='readArt("springflower.txt",2);'>
+										<span>春暖花开-走走停停-发现美</span>
+									</a>
+								</li>	
+								<li>
+									<a href="#" onclick='readArt("turbo.txt",3);'>
+										<span>两只蜗牛</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Bootstrap响应式布局</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>驾驭自己的人生从改变心态做起</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>每日一话</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>简单的手工玫瑰</span>
+									</a>
+								</li>
+							</ul>
+							<div id='numsort'>
+								<ul >
+									<li>1</li>
+									<li>2</li>
+									<li>3</li>
+									<li>4</li>
+									<li>5</li>
+									<li>6</li>
+									<li>7</li>
+									<li>8</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+					<!--最新文章侧边栏-->
+					<div id='newarticle' class='rightside_new2'>
+						<div class='new2_title'>
+							<p class='new_title_p'>最新文章</p>
+						</div>
+						<div class='new_body'>
+							<ul type='square'>
+								<li>
+									<a href="#">
+										<span>驾驭自己的人生从改变心态做起</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>犯错了怎么办？</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Bootstrap响应式布局</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>春暖花开-走走停停-发现美</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>灯光下的影子</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>两只蜗牛</span>
+									</a>
+								</li>			
+								<li>
+									<a href="#">
+										<span>每日一话</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>简单的手工玫瑰</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--栏目推荐侧边栏-->
+					<div id='propanel' class='rightside_new2'>
+						<div class='new2_title'>
+							<p class='new_title_p'>栏目推荐</p>
+						</div>
+						<div class='new_body'>
+							<ul type='square'>
+								<li>
+									<a href="#">
+										<span>驾驭自己的人生从改变心态做起</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>犯错了怎么办？</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>Bootstrap响应式布局</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>春暖花开-走走停停-发现美</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>灯光下的影子</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>两只蜗牛</span>
+									</a>
+								</li>			
+								<li>
+									<a href="#">
+										<span>每日一话</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>简单的手工玫瑰</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class='rightside_new3'>
+						<div class='new3_title'>
+							<p class='new_title_p'>友情链接</p>
+						</div>
+						<div class='new3_body'>
+							<ul>
+								<li>
+									<a href="#">
+										<span class='new3_body_span'>Silence个人博客</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class='new3_body_span2'>
+											-------------------------------------------
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class='new3_body_span'>技术社区</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class='new3_body_span2'>
+											------------------------------------------
+										</span>
+									</a>
+								</li>	
+							</ul>
+						</div>
+						<div class='new3_footer'>
+							<div>
+								<p>Design By Silence</p>
+								<p>Welcome To Browser</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src='js/carousel.js'></script>
+	</body>
+</html>

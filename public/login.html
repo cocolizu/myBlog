@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>博客登录界面</title>
+  <link rel='stylesheet' href='font-awesome-4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="css/login.css">
+  <script src='js/checknum.js'></script>
+  <script src='js/login_ajax.js'></script>
+ </head>
+ <body onload='getCheckNum();'>
+	<div class='loginfont' id='loginfont'>博客登录</div>
+	<div class='loginback'>
+		<!--登录界面-->
+		<div class='login' id='login'>
+			<div class='loginimg'>
+				<img src="img/head.jpg">
+			</div>
+			<hr>
+			<span class='userinfo' id='userinfo'></span>
+			<div class='user'>
+				<input type="text" id='user' placeholder='请输入用户名'> 
+			</div>
+			<span class='pwdinfo' id='pwdinfo'></span>
+			<div class='pwd'>
+				<input type="password" id='pwd' placeholder='请输入用户密码'>
+			</div>
+			<span class='checkinfo' id='checkinfo'></span>
+			<div class='checknum'>	
+				<input type="text" id='check' placeholder='请输入验证码' maxlength=4>
+			</div>
+			<div class='checkbtn'>
+				<a id='getnum' title='看不清楚，换一张' href="#" onclick='getCheckNum();return false;'></a>
+			</div>
+			<div class='box'>
+				<input type="checkbox">
+			</div>
+			<div class='autologin'>
+				<a href="#"><span>自动登录</span></a>
+			</div>
+			<div class='forget'>
+				<a href="#"><span>忘记密码？</span></a>
+			</div>
+			<div class='resetbtn'>
+				<a href="#"></a>
+			</div>
+			<div class='loginbtn'>
+				<a href="#" onclick='judgeInfo();getCheckNum();return false;'>登录</a>
+			</div>
+			<div class='resbtn'>
+				<a href="register.html" target='_self'>注册</a>
+			</div>
+		</div>
+		<div class='otherlogin'>
+			<hr class='hr1'>
+			<p>其他登录方式</p>
+			<hr class='hr2'>
+			<div class='loginfirst'>
+				<a href="#">
+					<i class='fa fa-qq' title='QQ登录'></i>
+				</a>
+			</div>
+			<div class='loginsecond' title='微博登录'>
+				<a href="#">
+					<i class='fa fa-weibo'></i>
+				</a>
+			</div>
+			<div class='loginthird' title='微信登录'>
+				<a href="#">
+					<i class='fa fa-weixin'></i>
+				</a>
+			</div>						
+		</div>
+	</div>
+ </body>
+</html>

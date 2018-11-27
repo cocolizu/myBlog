@@ -1,0 +1,196 @@
+/**{margin:0px;padding:0px;}*/
+a{text-decoration:none;}
+body{
+	background-image:url('../img/login_background.jpg');
+	background-repeat:no-repeat;
+	background-position:-200px -50px;
+}
+.regfont{
+	position:absolute;
+	top:60px;
+	left:43%;
+	font-family:'宋体';
+	font-size:45px;
+	color:white;
+	letter-spacing:5px;
+	transition:1s;
+}
+.regfont:hover{
+	opacity:0.5;
+	transform:scale(0.8,0.8);
+	transition:1s;
+}
+.backlogin{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:70px;
+	height:70px;
+	border-radius:50%;
+	background-color:rgba(0,0,0,0.5);
+	text-align:center;
+	line-height:75px;
+}
+.backlogin i{
+	color:white;
+	font-size:30px;
+}
+.backlogin:hover{
+	background-color:rgba(0,0,0,0.3);
+}
+.backlogin i:hover{
+	color:#666;
+}
+.regback{
+	position:relative;
+	width:100%;
+	height:500px;
+	margin:150px auto 0px;
+}
+.register{
+	position:absolute;
+	top:5px;
+	left:36%;
+	width:400px;
+	height:400px;
+	background-color:rgba(0,0,0,0.5);
+	border-radius:50%;
+}
+.reguser{
+	position:absolute;
+	top:85px;
+	left:45px;
+}
+.reguser span,.regpwd span,.regemail span,.regphone span{
+	font-family:'宋体';
+	color:white;
+}
+.reguser input,.regpwd input,.regemail input,.regphone input{
+	font-family:'宋体';
+	font-size:16px;
+	color:white;
+	width:220px;
+	height:30px;
+	box-sizing:border-box;
+	padding-left:10px;
+	padding-top:1px;
+	border:1px solid #999;
+	background-color:rgba(0,0,0,0.2);
+}
+.reguser input:hover,.regpwd input:hover,.regemail input:hover,.regphone input:hover{
+	border:1.5px solid #48D3FF;
+}
+.regpwd{
+	position:absolute;
+	top:145px;
+	left:45px;
+}
+.regemail{
+	position:absolute;
+	top:205px;
+	left:45px;
+}
+.regphone{
+	position:absolute;
+	top:265px;
+	left:45px;
+}
+.regbtn{
+	position:absolute;
+	top:340px;
+	left:145px;
+}
+.regbtn a{
+	display:block;
+	width:120px;
+	height:40px;
+	color:white;
+	background-color:#48D1CC;
+	text-align:center;
+	line-height:40px;
+	letter-spacing:5px;
+	border-radius:10px;
+}
+.regbtn a:hover{
+	background-color:#48D3ff;
+}
+.ps{
+	position:absolute;
+	top:20px;
+	left:150px;
+}
+.regerr{
+	position:absolute;
+	top:40px;
+	left:30%;
+	width:170px;
+	text-align:center;
+}
+.ps span,.regerr span{
+	font-family:'宋体';
+	font-size:13px;
+	color:#666;
+}
+.regerr span{
+	font-size:15px;
+	color:red;
+	text-align:center;
+}
+.regsuccess{
+	display:none;
+	position:absolute;
+	top:120px;
+	left:39%;
+	width:300px;
+	height:150px;
+	background-color:rgba(0,0,0,0.8);
+	border-radius:50%;
+	box-sizing:border-box;
+	text-align:center;
+	padding-top:40px;
+	z-index:2;
+}
+.regsuccess i, .regsuccess span{
+	font-size:18px;
+	color:green;
+}
+.regsuccess span{
+	font-family:'宋体';
+	color:white;
+}
+.regsuccess a{
+	margin-top:30px;
+	margin-left:110px;
+	display:block;
+	width:80px;
+	height:30px;
+	color:white;
+	background-color:#e41635;
+	text-align:center;
+	line-height:30px;
+	letter-spacing:2px;
+	transition:1s;
+}
+#floor{
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.6);
+	z-index:1;
+}
+.know{
+	position:absolute;
+	top:305px;
+	left:115px;
+}
+.know span{
+	font-family:'宋体';
+	font-size:12px;
+	color:#999;
+}
+.knowbox{
+	position:absolute;
+	top:307px;
+	left:95px;
+}

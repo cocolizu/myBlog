@@ -1,0 +1,83 @@
+.share{
+	position:relative;
+	width:700px;
+	height:400px;
+	margin-bottom:20px;
+	/*border:1px solid red;*/
+}
+.share_title{
+	position:absolute;
+	width:130px;
+	height:35px;
+	background:#666;
+	color:white;
+	font-family:'宋体';
+	text-align:center;
+	line-height:35px;
+	box-shadow:1px 1px 5px 1px #999;
+}
+.share_body{
+	position:absolute;
+	top:36px;
+	width:696px;
+	height:355px;
+	border:2px solid transparent;
+	border-top-color:#666;
+}
+.share_body_div1,.share_body_div2,.share_body_div3,.share_body_div4,.share_body_div5,.share_body_div6,.share_body_div7,.share_body_div8{
+	position:absolute;
+	width:150px;
+	height:120px;
+	top:25px;
+	left:12px;
+	border:1px solid #ccc;
+	z-index:1;
+}
+.share_body_div1:hover + div,.share_body_div2:hover + div,.share_body_div3:hover + div,.share_body_div4:hover + div,.share_body_div5:hover + div,.share_body_div6:hover + div,.share_body_div7:hover + div,.share_body_div8:hover + div{
+	opacity:1;
+}
+.share_body_div2{left:187px;}
+.share_body_div3{left:361px;}
+.share_body_div4{left:533px;}
+.share_body_div5{top:190px;}
+.share_body_div6{top:190px;left:187px;}
+.share_body_div7{top:190px;left:361px;}
+.share_body_div8{top:190px;left:533px;}
+.share_body_div9,.share_body_div10,.share_body_div11,.share_body_div12,.share_body_div13,.share_body_div14,.share_body_div15,.share_body_div16{
+	position:absolute;
+	width:160px;
+	height:160px;
+	top:20px;
+	left:8px;
+	background:#666;
+	text-align:center;
+	color:white;
+	font-size:13px;
+	font-family:'宋体';
+	box-sizing:border-box;
+	padding-top:135px;
+	vertical-align:bottom;
+	opacity:0;
+	transition:all 1s linear;
+}
+.share_body_div10{left:183px;}
+.share_body_div11{left:357px;}
+.share_body_div12{left:529px;}
+.share_body_div13{top:185px;}
+.share_body_div14{top:185px;left:183px;}
+.share_body_div15{top:185px;left:357px;}
+.share_body_div16{top:185px;left:529px;}
+.share_body img{
+	width:150px;
+	height:120px;
+}
+.share_more{
+	position:absolute;
+	top:10px;
+	right:5px;
+}
+.share_more a{
+	color:#333;
+	font-family:'宋体';
+	font-size:14px;
+}

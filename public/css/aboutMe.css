@@ -1,0 +1,52 @@
+.header{
+	position:absolute;
+	top:15px;
+	left:0px;
+	width:702px;
+	height:60px;
+	/*border:1px solid red;*/
+}
+.header p{
+	margin:15px 0px 0px 50px;
+	font-family:'宋体';
+	font-size:15px;
+	color:#333;
+}
+.header i{
+	font-size:18px;
+	color:#999;
+}
+.header hr{
+	width:702px;
+	background-color:#e0e0e0;
+	border:0px;
+	height:1px;
+	margin:10px 0px 0px 1px;
+}
+.section{
+	position:absolute;
+	top:90px;
+	left:2px;
+	width:700px;
+	height:1330px;
+	/*border:1px solid red;*/
+}
+.section h2{
+	font-family:cursive;
+	font-size:22px;
+	color:#f16b17;
+	width:290px;
+	margin-bottom:20px;
+	transition:1s;
+}
+.section h2:hover{
+	transform:translate(20px,0px);
+}
+.section p{
+	font-family:'宋体';
+	font-size:14px;
+	color:black;
+	margin-bottom:20px;
+	letter-spacing:1px;
+	line-height:25px;
+}
